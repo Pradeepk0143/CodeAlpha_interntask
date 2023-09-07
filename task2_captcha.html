@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom CAPTCHA</title>
+    <style>
+        /* Add some basic styling to your CAPTCHA container */
+        #captcha-container {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+        /* Style the refresh button */
+        #refresh-button {
+            cursor: pointer;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Custom CAPTCHA Example</h1>
+    
+    <div id="captcha-container"></div>
+    <input type="text" id="captcha-input" placeholder="Enter CAPTCHA">
+    <span id="refresh-button">Refresh</span>
+    <button id="verify-button">Verify</button>
+
+    <script>
+        // Generate a random CAPTCHA code
+        function generateCaptcha() {
+            const captchaContainer = document.getElementById('captcha-container');
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let captcha = '';
+            for (let i = 0; i < 5; i++) {
+                const randomIndex = Math.floor(Math.random() * characters.length);
+                captcha += characters[randomIndex];
+            }
+            captchaContainer.textContent = captcha;
+        }
+
+        // Refresh the CAPTCHA
+        const refreshButton = document.getElementById('refresh-button');
+        refreshButton.addEventListener('click', generateCaptcha);
+        generateCaptcha(); // Generate initial CAPTCHA
+
+        // Verify the CAPTCHA
+        const verifyButton = document.getElementById('verify-button');
+        verifyButton.addEventListener('click', function () {
+            const captchaInput = document.getElementById('captcha-input');
+            const captchaContainer = document.getElementById('captcha-container');
+            if (captchaInput.value === captchaContainer.textContent) {
+                alert('CAPTCHA verification passed.');
+                // You can add additional form processing logic here
+            } else {
+                alert('CAPTCHA verification failed. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>

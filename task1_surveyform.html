@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Multi-Page Survey</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .page {
+      display: none;
+    }
+    .page.active {
+      display: block;
+    }
+    .button-container {
+      margin-top: 20px;
+    }
+    button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="page active" id="page1">
+    <h2>Page 1</h2>
+    <label for="question1">Question 1:</label>
+    <input type="text" id="question1">
+    <div class="button-container">
+      <button onclick="nextPage()">Next</button>
+    </div>
+  </div>
+
+  <div class="page" id="page2">
+    <h2>Page 2</h2>
+    <label for="question2">Question 2:</label>
+    <input type="text" id="question2">
+    <div class="button-container">
+      <button onclick="prevPage()">Previous</button>
+      <button onclick="nextPage()">Next</button>
+    </div>
+  </div>
+
+  <div class="page" id="page3">
+    <h2>Page 3</h2>
+    <label for="question3">Question 3:</label>
+    <input type="text" id="question3">
+    <div class="button-container">
+      <button onclick="prevPage()">Previous</button>
+      <button onclick="submitForm()">Submit</button>
+    </div>
+  </div>
+
+  <script>
+    let currentPage = 1;
+
+    function nextPage() {
+      if (currentPage < 3) {
+        document.getElementById(`page${currentPage}`).classList.remove('active');
+        currentPage++;
+        document.getElementById(`page${currentPage}`).classList.add('active');
+      }
+    }
+
+    function prevPage() {
+      if (currentPage > 1) {
+        document.getElementById(`page${currentPage}`).classList.remove('active');
+        currentPage--;
+        document.getElementById(`page${currentPage}`).classList.add('active');
+      }
+    }
+
+    function submitForm() {
+      // You can implement the form submission logic here
+      // e.g., send data to an email or database
+      alert('Form submitted successfully!');
+    }
+  </script>
+</body>
+</html>

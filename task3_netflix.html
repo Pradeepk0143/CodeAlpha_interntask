@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style> 
+/* Reset some default styling */
+body, h1, h2, p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Basic styling */
+body {
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: #111;
+  color: #fff;
+  padding: 1rem;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-links a {
+  color: #fff;
+  margin: 0 1rem;
+  text-decoration: none;
+}
+
+.main {
+  padding: 2rem;
+}
+
+.banner img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 2rem;
+}
+
+.movie-card {
+  width: 150px;
+  margin: 1rem;
+}
+
+.movie-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #111;
+  color: #fff;
+}
+
+</style>
+  <title>Netflix Clone</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="data:image/png;base64,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" alt="Netflix Logo">
+      </div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">TV Shows</a>
+        <a href="#">Movies</a>
+        <a href="#">New & Popular</a>
+        <a href="#">My List</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="banner">
+      <img src="https://cdn.arstechnica.net/wp-content/uploads/2022/07/netflix-640x360.jpg" alt="Banner Image">
+    </div>
+    <div class="movie-list">
+      <!-- Movie posters and information will go here -->
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2023 Netflix Clone</p>
+  </footer>
+</body>
+<script>
+// JavaScript code for fetching and displaying movie data
+// This could involve AJAX requests to an API for real data
+
+// Sample movie data (replace this with actual data)
+const movies = [
+  { title: "Movie 1", imageUrl: "https://i.pinimg.com/1200x/d4/80/e2/d480e25470cfd9ec06e323e6330105ae.jpg" },
+  { title: "Movie 2", imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAXSSABs6Wgjah-IqtzPSVOh1ekTvy6M1aSg&usqp=CAU.jpg" },
+  { title: "Movie 3", imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-hUn6_uHWKEwOcEnVi-QeUuX7h--v3npksQ&usqp=CAU" },
+  // Add more movies...
+];
+
+const movieList = document.querySelector(".movie-list");
+
+// Populate movie list
+movies.forEach(movie => {
+  const movieCard = document.createElement("div");
+  movieCard.classList.add("movie-card");
+  
+  const movieImage = document.createElement("img");
+  movieImage.src = movie.imageUrl;
+  movieImage.alt = movie.title;
+  
+  movieCard.appendChild(movieImage);
+  movieList.appendChild(movieCard);
+});
+
+</script>
+</html>
